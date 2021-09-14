@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-uf6ntoxzj7792dyq9co.mysql.rds.aliyuncs.com:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 1qaz!QAZ
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml # mapper映射文件路径
+  type-aliases-package: com.product.entity
+
+  # config-location:  # 指定mybatis的核心配置文件
