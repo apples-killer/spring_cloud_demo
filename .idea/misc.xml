@@ -9,6 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/euraka_server/pom.xml" />
         <option value="$PROJECT_DIR$/pruduct_service/pom.xml" />
       </set>
     </option>
