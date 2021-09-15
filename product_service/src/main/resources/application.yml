@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 9011
 
 spring:
   datasource:
@@ -20,6 +20,10 @@ mybatis:
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 5 #向eureka注册服务的时间间隔
+    lease-expiration-duration-in-seconds: 10 #续约到期时间
+
   client:
     service-url:
-      defaultZone: http://127.0.0.1:9000/eureka/
+      defaultZone: http://127.0.0.1:9000/eureka/,http://127.0.0.1:8000/eureka/

@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eureka_server" />
-        <module name="product_service" />
         <module name="order_service" />
+        <module name="eureka_server_2" />
+        <module name="product_service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="euraka_server" options="-parameters" />
       <module name="eureka_server" options="-parameters" />
+      <module name="eureka_server_2" options="-parameters" />
       <module name="order_service" options="-parameters" />
       <module name="product_service" options="-parameters" />
       <module name="pruduct_service" options="-parameters" />

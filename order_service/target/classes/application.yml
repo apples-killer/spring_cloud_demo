@@ -3,9 +3,22 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:9000/eureka  # 注册到 eureka
+      defaultZone: http://127.0.0.1:9000/eureka,http://127.0.0.1:8000/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 5 #向eureka注册服务的时间间隔
+    lease-expiration-duration-in-seconds: 10 #续约到期时间
 spring:
   application:
     name: order
+
+#修改客户端负载均衡策略
+service-product:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    ConnectTimeout: 250 # Ribbon的连接超时时间
+    ReadTimeout: 1000 # Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
+    MaxAutoRetries: 1 # 对当前实例的重试次数
