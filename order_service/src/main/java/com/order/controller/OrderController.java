@@ -1,6 +1,7 @@
 package com.order.controller;
 
 import com.order.entity.ProductInfo;
+import com.order.feign.ProductFeignClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -24,12 +25,14 @@ public class OrderController {
     private String port;
 
     @Resource
+    private ProductFeignClient productFeignClient;
+
+    @Resource
     private DiscoveryClient discoveryClient;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ProductInfo queryProductInfoById(@PathVariable Integer id) {
-        ProductInfo productInfo = restTemplate.getForObject("http://" +"service-product"+"/productCtrl/" + id, ProductInfo.class);
-
+        ProductInfo productInfo = productFeignClient.queryProductInfo(id);
         return productInfo;
     }
 

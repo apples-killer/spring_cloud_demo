@@ -22,6 +22,13 @@ public class ProductController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public ProductInfo queryProductInfoById(@PathVariable Integer id){
+        System.out.println("begin sleep");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("end sleep");
         ProductInfo productInfo = productService.queryProductById(id);
         productInfo.setProductName("IP地址："+ip+":"+port);
         return productInfo;

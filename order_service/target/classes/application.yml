@@ -22,3 +22,18 @@ service-product:
     OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
     MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
     MaxAutoRetries: 1 # 对当前实例的重试次数
+feign:
+  hystrix: #开启hystrix支持
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #默认的连接超时时间1秒,若1秒没有返回数据,自动的触发降级逻辑
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
